@@ -42,9 +42,64 @@ lrwxrwxrwx 1 root root   48 may  3 12:29 onehtmlpage.babywantsmilk.com -> ../sit
 
 ## Creación de la pagina web.
 El directorio donde se guardan las paginas es ```/var/www/```. <br>
-Aqui creare un directorio con el directorio *baby*, mismo nombre que puse en el *root*, para luego crear un html y copiar el contenido ahí dentro.
+Aquí crearé el respectivo directorio que puse en el *root* y el html donde copiaré la página de *onehtmlpage*.
 ```
 mkdir baby
 cd baby
 nano index.html
 ```
+
+## Redirección del dominio
+Finalmente para que el dominio redirija correctamente a la ip local, tendria que añadir el dominio al archivo ```hosts``` dentro del directorio ```/etc/```
+```
+127.0.0.1       localhost
+127.0.1.1       Fran
+127.0.0.1       onehtmlpage.babywantsmilk.com
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+```
+Finalmente, poniendo el dominio en el navegador, muestra correctamente la pagina html
+![imagen](https://user-images.githubusercontent.com/91600940/166503671-35f715cc-4402-42af-b6da-7921e2cae675.png)
+
+
+## Creación segunda pagina
+Para esta segunda página consistiria en repetir los mismos pasos que para la página anterior, lo único que habria que cambiar el *root* y el *server_name* con sus respectivos directorio y dominio, además de que esta no tendria que tener la opción de ```default_server```, ya que como he explicado antes, solo se puede tener 1 archivo con esta configuración.
+```
+listen 80;
+listen [::]:80;
+
+...
+
+root /var/www/colony;
+server_name onehtmlpage.antcolony.com;
+...
+```
+También se añadiria su respectivo link simbolico en *sites-enabled* y sus respectiva carpeta y html.
+```
+root@Fran:/etc/nginx/sites-enabled# ln -s ../sites-available/onehtmlpage.antcolony.com  .
+cd /var/www/
+mkdir colony
+cd colony/
+nano index.html
+```
+Por último, también habria que añadirlo al ```hosts```.
+```
+  GNU nano 4.8                        hosts                         Modificado  
+127.0.0.1       localhost
+127.0.1.1       Fran
+127.0.0.1       onehtmlpage.babywantsmilk.com
+127.0.0.1       onehtmlpage.antcolony.com
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+```
+De esta forma ya tendría en funcionamiento las 2 paginas con los diferentes subdominios.
+![imagen](https://user-images.githubusercontent.com/91600940/166507495-5bde98b6-faac-45ec-9f33-790d09d72830.png)
