@@ -17,14 +17,15 @@ koi-utf         modules-enabled    sites-available  win-utf
 1. Dentro de *sites-available copio* el archivo default ```cp default onehtmlpage.babywantsmilk.com ```
 2. Después, modifico tanto el *server_name*, con el dominio de la pagina, y *root*, con la ruta del donde estará el html. <br>
 ```
-...
- root /var/www/baby;
-
-# Add index.php to the list if you are using PHP
-index index.html index.htm index.nginx-debian.html;
-
-server_name onehtmlpage.babywantsmilk.com;
-...
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        
+        ...
+        
+        root /var/www/baby;
+        server_name onehtmlpage.babywantsmilk.com;
+        ...
 ```
 3. Ahora en *sites-enabled* creo un link simbolico que apunte a este archivo
 ```
@@ -69,14 +70,15 @@ Finalmente, poniendo el dominio en el navegador, muestra correctamente la pagina
 ## Creación segunda pagina
 Para esta segunda página consistiria en repetir los mismos pasos que para la página anterior, lo único que habria que cambiar el *root* y el *server_name* con sus respectivos directorio y dominio, además de que esta no tendria que tener la opción de ```default_server```, ya que como he explicado antes, solo se puede tener 1 archivo con esta configuración.
 ```
-listen 80;
-listen [::]:80;
+server{
+        listen 80;
+        listen [::]:80;
 
-...
+        ...
 
-root /var/www/colony;
-server_name onehtmlpage.antcolony.com;
-...
+        root /var/www/colony;
+        server_name onehtmlpage.antcolony.com;
+        ...
 ```
 También se añadiria su respectivo link simbolico en *sites-enabled* y sus respectiva carpeta y html.
 ```
