@@ -51,7 +51,7 @@ nano index.html
 ```
 
 ## Redirección del dominio
-Finalmente para que el dominio redirija correctamente a la ip local, tendria que añadir el dominio al archivo ```hosts``` dentro del directorio ```/etc/```
+Finalmente para que el dominio se redirija correctamente a la propia máquina, tendria que añadir el dominio al archivo ```hosts``` dentro del directorio ```/etc/```
 ```
 127.0.0.1       localhost
 127.0.1.1       Fran
@@ -88,7 +88,7 @@ mkdir colony
 cd colony/
 nano index.html
 ```
-Por último, también habria que añadirlo al ```hosts```.
+Por último, también habría que añadirlo al ```hosts```.
 ```
   GNU nano 4.8                        hosts                         Modificado  
 127.0.0.1       localhost
