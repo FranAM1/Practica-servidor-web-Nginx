@@ -15,7 +15,7 @@ koi-utf         modules-enabled    sites-available  win-utf
 
 ```
 1. Dentro de *sites-available copio* el archivo default ```cp default onehtmlpage.babywantsmilk.com ```
-2. Después, modifico tanto el *server_name* y *root* de este archivo con los valores correspondientes. <br>
+2. Después, modifico tanto el *server_name*, con el dominio de la pagina, y *root*, con la ruta del donde estará el html. <br>
 ```
 ...
  root /var/www/baby;
@@ -42,7 +42,7 @@ lrwxrwxrwx 1 root root   48 may  3 12:29 onehtmlpage.babywantsmilk.com -> ../sit
 
 ## Creación de la pagina web.
 El directorio donde se guardan las paginas es ```/var/www/```. <br>
-Aqui creare un directorio con el directorio *baby*, mismo nombre que puse en el *root*, que contendra el html de la pagina.
+Aqui creare un directorio con el directorio *baby*, mismo nombre que puse en el *root*, para luego crear un html y copiar el contenido ahí dentro.
 ```
 mkdir baby
 cd baby
