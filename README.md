@@ -39,3 +39,12 @@ lrwxrwxrwx 1 root root   48 may  3 12:29 onehtmlpage.babywantsmilk.com -> ../sit
 ```
 4. Una vez hecho esto, como quiero que esta pagina sea la principal, haré un ```rm default``` tanto en *sites-enabled* como en *sites-available*, ya que aparte de que ya no lo voy a usar para nada, solo se permite 1 solo archivo con la configuracion de ```listen 80 default_server``` .
 5. Después de hacer todos estos cambios es recomendable hacer un ```nginx -s reload``` para reiniciar el servidor.
+
+## Creación de la pagina web.
+El directorio donde se guardan las paginas es ```/var/www/```. <br>
+Aqui creare un directorio con el directorio *baby*, mismo nombre que puse en el *root*, que contendra el html de la pagina.
+```
+mkdir baby
+cd baby
+nano index.html
+```
